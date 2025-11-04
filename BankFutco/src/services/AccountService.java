@@ -5,37 +5,26 @@ import java.util.Optional;
 import model.Account;
 import repositories.AccountRepository;
 
-public class AccountService implements IAccountService {
-	private final AccountRepository repository;
+public class AccountService {
+    private final AccountRepository repo = new AccountRepository();
 
-	// Constructor por defecto: crea e inyecta el repositorio
-	public AccountService() {
-		this(new AccountRepository());
-	}
+    public Account save(Account account) {
+        return repo.save(account);
+    }
 
-	// Constructor para inyección
-	public AccountService(AccountRepository repository) {
-		this.repository = repository;
-	}
+    public Optional<Account> findById(String accountNumber) {
+        return repo.findById(accountNumber);
+    }
 
-	@Override
-	public Account save(Account account) {
-		// Delegamos al repositorio (upsert). El repositorio usa un Map para garantizar unicidad por accountNumber.
-		return repository.save(account);
-	}
+    public List<Account> findAll() {
+        return repo.findAll();
+    }
 
-	@Override
-	public Optional<Account> findById(String accountNumber) {
-		return repository.findById(accountNumber);
-	}
+    public boolean deleteById(String accountNumber) {
+        return repo.deleteById(accountNumber);
+    }
 
-	@Override
-	public List<Account> findAll() {
-		return repository.findAll();
-	}
-
-	@Override
-	public boolean deleteById(String accountNumber) {
-		return repository.deleteById(accountNumber);
-	}
+    public boolean existsById(String accountNumber) {
+        return repo.existsById(accountNumber);
+    }
 }
