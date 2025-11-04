@@ -34,10 +34,12 @@ public class LoansRepository {
     }
 
     public boolean deleteById(String id) {
+        if (id == null) return false;
         return storage.remove(id) != null;
     }
 
     public boolean existsById(String id) {
+        if (id == null) return false;
         return storage.containsKey(id);
     }
 }
