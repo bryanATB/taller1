@@ -18,7 +18,7 @@ public class CardsRepository {
 
     public Cards save(Cards card) {
         if (card == null) throw new IllegalArgumentException("Card no puede ser null");
-        if (card.getCardNumber() == null) throw new IllegalArgumentException("cardNumber no puede ser null");
+        if (card.getCardNumber() == null) throw new IllegalArgumentException("cardNumber no puede ser  null");
         storage.put(card.getCardNumber(), card);
         return card;
     }

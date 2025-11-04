@@ -16,7 +16,7 @@ public class BalanceRepository {
     }
 
     public Balance save(Balance b) {
-        if (b == null) throw new IllegalArgumentException("Balance no puede ser un null");
+        if (b == null) throw new IllegalArgumentException("Balance no puede ser null");
         if (b.getId() == null) b.setId(UUID.randomUUID().toString());
         storage.put(b.getId(), b);
         return b;
